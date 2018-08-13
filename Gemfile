@@ -64,6 +64,9 @@ gem 'figaro'
 # Materialize CSS gem
 gem 'materialize-sass'
 
+# Gem for jQuery
+gem 'jquery-rails'
+
 # bcrypt for secure passwords
 gem 'bcrypt', '~> 3.1.7'
 
