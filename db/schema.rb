@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_183901) do
+ActiveRecord::Schema.define(version: 2018_08_13_184043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "card_transactions", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "transaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_card_transactions_on_card_id"
+    t.index ["transaction_id"], name: "index_card_transactions_on_transaction_id"
+  end
 
   create_table "card_types", force: :cascade do |t|
     t.string "name"
@@ -58,6 +67,15 @@ ActiveRecord::Schema.define(version: 2018_08_13_183901) do
     t.index ["transaction_type_id"], name: "index_transactions_on_transaction_type_id"
   end
 
+  create_table "wallet_transactions", force: :cascade do |t|
+    t.bigint "wallet_id"
+    t.bigint "transaction_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transaction_id"], name: "index_wallet_transactions_on_transaction_id"
+    t.index ["wallet_id"], name: "index_wallet_transactions_on_wallet_id"
+  end
+
   create_table "wallets", force: :cascade do |t|
     t.decimal "balance"
     t.string "name"
@@ -65,7 +83,11 @@ ActiveRecord::Schema.define(version: 2018_08_13_183901) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "card_transactions", "cards"
+  add_foreign_key "card_transactions", "transactions"
   add_foreign_key "cards", "card_types"
   add_foreign_key "customers", "wallets"
   add_foreign_key "transactions", "transaction_types"
+  add_foreign_key "wallet_transactions", "transactions"
+  add_foreign_key "wallet_transactions", "wallets"
 end
