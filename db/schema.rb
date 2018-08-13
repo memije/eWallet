@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_183527) do
+ActiveRecord::Schema.define(version: 2018_08_13_183901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,24 @@ ActiveRecord::Schema.define(version: 2018_08_13_183527) do
     t.index ["wallet_id"], name: "index_customers_on_wallet_id"
   end
 
+  create_table "transaction_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.datetime "transaction_date"
+    t.boolean "complete"
+    t.decimal "amount"
+    t.decimal "porcentual_commission"
+    t.decimal "fixed_commission"
+    t.bigint "transaction_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transaction_type_id"], name: "index_transactions_on_transaction_type_id"
+  end
+
   create_table "wallets", force: :cascade do |t|
     t.decimal "balance"
     t.string "name"
@@ -49,4 +67,5 @@ ActiveRecord::Schema.define(version: 2018_08_13_183527) do
 
   add_foreign_key "cards", "card_types"
   add_foreign_key "customers", "wallets"
+  add_foreign_key "transactions", "transaction_types"
 end
