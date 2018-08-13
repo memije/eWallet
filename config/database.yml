@@ -21,6 +21,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+  # Database Host
+  host: localhost
+  # Database credentials
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+
 development:
   <<: *default
   database: ewallet_development
