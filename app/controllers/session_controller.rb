@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     @customer = Customer.find_by("LOWER(email) = ?", login_params[:email].downcase)
     if @customer.present? && @customer.authenticate(login_params[:password])
       session[:customer_id] = @customer.id
-      flash[:notice] = "Bienvenido de vuelta #{@customer.name}"
+      flash.now[:notice] = "Bienvenido de vuelta #{@customer.name}"
       redirect_to home_path
     else
       flash.now[:error] = "La combinacion de email y contraseña es incorrecta."

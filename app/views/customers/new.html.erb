@@ -1,2 +1,59 @@
-<h1>Customers#new</h1>
-<p>Find me in app/views/customers/new.html.erb</p>
+<div class="center">
+  <div class="section"></div>
+  <h5 class="indigo-text">Registro</h5>
+  <% if flash[:error] %>
+    <span class="red-text">
+      <%= flash[:error] %>
+    </span>
+  <% end %>
+  <div class="section"></div>
+
+  <div class="container">
+    <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+      <%= form_for @customer, html: {role: "form", class: "col s12"} do |f| %>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.text_field :name, :required => true %>
+            <%= f.label :name, "Nombre" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.email_field :email, :required => true %>
+            <%= f.label :email, "Correo Electrónico" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.password_field :password, :required => true %>
+            <%= f.label :password, "Contraseña"%>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.password_field :password_confirmation, :required => true %>
+            <%= f.label :password_confirmation, "Confirmar contraseña"%>
+          </div>
+        </div>
+
+        <div class="center">
+          <div class="row">
+            <%= f.submit "Enviar", class: "col s12 btn btn-large " %>
+          </div>
+        </div>
+
+      <% end %>
+
+      <%= link_to session_new_path do %>
+        Iniciar Sesión
+      <% end %>
+
+      <div class="section"></div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <div class="center">
     <div class="section"></div>
-    <h5 class="indigo-text">Inicia sesión para continuar</h5>
+    <h5 class="indigo-text">Iniciar Sesión</h5>
     <% if flash[:error] %>
               <span class="red-text">
                 <%= flash[:error] %>
@@ -35,7 +35,9 @@
 
         <% end %>
 
-        <a href="#">Registro</a>        
+        <%= link_to new_customers_path do %>
+          Registro
+        <% end %>
 
         <div class="section"></div>
       </div>
