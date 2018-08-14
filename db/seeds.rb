@@ -1,8 +1,8 @@
 # Create transaction types catalog
 TransactionType.create([
-                           {name: 'Fondear wallet'},
-                           {name: 'Transferir a wallet'},
-                           {name: 'Transferir a tarjeta de débito'}
+                           {name: 'Fondeo de wallet'},
+                           {name: 'Transferencia a wallet'},
+                           {name: 'transferencia a tarjeta de débito'}
                        ])
 
 # Create card types catalog

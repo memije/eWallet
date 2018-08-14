@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_173755) do
+ActiveRecord::Schema.define(version: 2018_08_14_181739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2018_08_14_173755) do
     t.bigint "customers_id"
     t.index ["card_type_id"], name: "index_cards_on_card_type_id"
     t.index ["customers_id"], name: "index_cards_on_customers_id"
+  end
+
+  create_table "customer_wallets", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "wallet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_customer_wallets_on_customer_id"
+    t.index ["wallet_id"], name: "index_customer_wallets_on_wallet_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -90,6 +99,8 @@ ActiveRecord::Schema.define(version: 2018_08_14_173755) do
   add_foreign_key "card_transactions", "transaction_histories"
   add_foreign_key "cards", "card_types"
   add_foreign_key "cards", "customers", column: "customers_id"
+  add_foreign_key "customer_wallets", "customers"
+  add_foreign_key "customer_wallets", "wallets"
   add_foreign_key "customers", "wallets"
   add_foreign_key "transaction_histories", "transaction_types"
   add_foreign_key "transaction_histories", "wallets"

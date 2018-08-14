@@ -2,6 +2,7 @@ class Wallet < ApplicationRecord
   has_one :customer
   has_many :wallet_transaction
   has_many :transaction_history
+  has_many :customer_wallet
 
   before_create :assign_unique_name
 
