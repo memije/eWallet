@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :user_cards
+  resources :cards
   resource :customers
 
   get 'session/new' => 'session#new', as: :session_new
