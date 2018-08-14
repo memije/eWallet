@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_171906) do
+ActiveRecord::Schema.define(version: 2018_08_14_173755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "card_transactions", force: :cascade do |t|
     t.bigint "card_id"
-    t.bigint "transaction_id"
+    t.bigint "transaction_history_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_card_transactions_on_card_id"
-    t.index ["transaction_id"], name: "index_card_transactions_on_transaction_id"
+    t.index ["transaction_history_id"], name: "index_card_transactions_on_transaction_history_id"
   end
 
   create_table "card_types", force: :cascade do |t|
@@ -51,33 +51,31 @@ ActiveRecord::Schema.define(version: 2018_08_14_171906) do
     t.index ["wallet_id"], name: "index_customers_on_wallet_id"
   end
 
+  create_table "transaction_histories", force: :cascade do |t|
+    t.boolean "complete"
+    t.decimal "amount"
+    t.decimal "porcentual_comission"
+    t.decimal "fixed_comission"
+    t.bigint "wallet_id"
+    t.bigint "transaction_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transaction_type_id"], name: "index_transaction_histories_on_transaction_type_id"
+    t.index ["wallet_id"], name: "index_transaction_histories_on_wallet_id"
+  end
+
   create_table "transaction_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.datetime "transaction_date"
-    t.boolean "complete"
-    t.decimal "amount"
-    t.decimal "porcentual_commission"
-    t.decimal "fixed_commission"
-    t.bigint "transaction_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "wallets_id"
-    t.integer "wallet_id"
-    t.index ["transaction_type_id"], name: "index_transactions_on_transaction_type_id"
-    t.index ["wallets_id"], name: "index_transactions_on_wallets_id"
-  end
-
   create_table "wallet_transactions", force: :cascade do |t|
     t.bigint "wallet_id"
-    t.bigint "transaction_id"
+    t.bigint "transaction_history_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["transaction_id"], name: "index_wallet_transactions_on_transaction_id"
+    t.index ["transaction_history_id"], name: "index_wallet_transactions_on_transaction_history_id"
     t.index ["wallet_id"], name: "index_wallet_transactions_on_wallet_id"
   end
 
@@ -89,12 +87,12 @@ ActiveRecord::Schema.define(version: 2018_08_14_171906) do
   end
 
   add_foreign_key "card_transactions", "cards"
-  add_foreign_key "card_transactions", "transactions"
+  add_foreign_key "card_transactions", "transaction_histories"
   add_foreign_key "cards", "card_types"
   add_foreign_key "cards", "customers", column: "customers_id"
   add_foreign_key "customers", "wallets"
-  add_foreign_key "transactions", "transaction_types"
-  add_foreign_key "transactions", "wallets", column: "wallets_id"
-  add_foreign_key "wallet_transactions", "transactions"
+  add_foreign_key "transaction_histories", "transaction_types"
+  add_foreign_key "transaction_histories", "wallets"
+  add_foreign_key "wallet_transactions", "transaction_histories"
   add_foreign_key "wallet_transactions", "wallets"
 end

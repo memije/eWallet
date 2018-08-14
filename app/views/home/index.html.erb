@@ -18,8 +18,11 @@
     <div class="card indigo lighten-5">
       <div class="card-content">
         <span class="card-title"><i class="material-icons">history</i> Historial</span>
-        <% @wallet.transaction_history.each do |n|%>
-          <%= n %>
+        <% if @wallet.transaction_history.count == 0%>
+          <h5>No hay transacciones registradas</h5>
+        <% end %>
+        <% @wallet.transaction_history.each do |transaction|%>
+          <%= transaction %>
         <% end %>
       </div>
     </div>
