@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+
   def new
   end
 
@@ -19,6 +20,6 @@ class SessionController < ApplicationController
 
   private
   def login_params
-    params.require(:login).permit(:email,:password)
+    params.require(:session).permit(:email, :password)
   end
 end

@@ -1,6 +1,11 @@
-<main class="center">
+<div class="center">
     <div class="section"></div>
     <h5 class="indigo-text">Inicia sesión para continuar</h5>
+    <% if flash[:error] %>
+              <span class="red-text">
+                <%= flash[:error] %>
+              </span>
+    <% end %>
     <div class="section"></div>
 
     <div class="container">
@@ -8,23 +13,17 @@
 
         <%= form_for :session, html: {role: "form", class: "col s12"} do |f| %>
           
-          <% if flash[:error] %>        
-            <span class="red-text">
-              <%= flash[:error] %>
-            </span>
-          <% end %>
-          
-          <div class='row'>
-            <div class='input-field col s12'>
-              <%= f.email_field :email %>              
-              <label for='email'>Correo electrónico</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.email_field :email, :required => true %>
+              <%= f.label :email, "Correo Electrónico" %>
             </div>
           </div>
 
-          <div class='row'>
-            <div class='input-field col s12'>
-              <%= f.password_field :password %>              
-              <label for='email'>Contraseña</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.password_field :password, :required => true %>
+              <%= f.label :password, "Contraseña"%>
             </div>
           </div>
 
@@ -41,7 +40,4 @@
         <div class="section"></div>
       </div>
     </div>
-
-  <div class="section"></div>
-  <div class="section"></div>
-</main>
+</div>
