@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require activestorage
 //= require_tree .
-//= require materialize
+//= require activestorage
 //= require backstretch/jquery.backstretch.min.js
+//= require materialize

@@ -10,6 +10,39 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav>
+      <div class="nav-wrapper">
+
+        <a href="#" data-target="slide-out" class="sidenav-trigger brand-logo show-on-large"><i class="material-icons">menu</i>eWallet</a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <%= link_to session_destroy_path, method: :delete, id: 'cerrar_sesion_btn' do %>
+              Cerrar Sesión
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul id="slide-out" class="sidenav">
+      <li><a href="#!"><i class="material-icons">account_balance_wallet</i>Mi Wallet</a></li>
+      <li><a href="#!"><i class="material-icons">credit_card</i>Administrar Tarjetas</a></li>
+      <li><a href="#!"><i class="material-icons">send</i>Transferencias</a></li>
+      <li><a href="#!"><i class="material-icons">history</i>Historial</a></li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Subheader</a></li>
+      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $(".sidenav").sidenav();
+        });
+    </script>
   </body>
 </html>

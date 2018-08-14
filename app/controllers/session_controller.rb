@@ -1,6 +1,7 @@
 class SessionController < ApplicationController
 
   def new
+    render layout: "empty"
   end
 
   def create    
@@ -11,11 +12,13 @@ class SessionController < ApplicationController
       redirect_to home_path
     else
       flash.now[:error] = "La combinacion de email y contraseña es incorrecta."
-      render :new
+      render :new, layout: "empty"
     end
   end
 
   def destroy
+    reset_session
+    redirect_to root_url
   end
 
   private

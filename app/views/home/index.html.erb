@@ -1,2 +1,27 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <div class="col12">
+    <div class="card indigo">
+      <div class="card-content white-text">
+        <span class="card-title"><i class="material-icons">account_balance_wallet</i> Mi Wallet <small class="grey-text lighten-5">Wallet ID: <%= @wallet.name %></small></span>
+        <h4>Fondos: <%= number_to_currency(@wallet.balance) %></h4>
+      </div>
+      <div class="card-action">
+        <a href="#">Fondear Wallet</a>
+        <a href="#">Transferencias</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col12">
+    <div class="card indigo lighten-5">
+      <div class="card-content">
+        <span class="card-title"><i class="material-icons">history</i> Historial</span>
+        <% @wallet.transaction_history.each do |n|%>
+          <%= n %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
