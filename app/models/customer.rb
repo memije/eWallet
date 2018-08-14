@@ -1,6 +1,12 @@
 class Customer < ApplicationRecord
-  has_secure_password
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+
   belongs_to :wallet
   has_many :card
+
+  has_secure_password
+
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :password, presence: true
+  validates :password, confirmation: true, on: :create
+
 end

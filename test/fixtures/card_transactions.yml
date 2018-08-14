@@ -2,8 +2,8 @@
 
 one:
   card: one
-  transaction: one
+  transaction_history: one
 
 two:
   card: two
-  transaction: two
+  transaction_history: two

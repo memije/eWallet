@@ -2,8 +2,8 @@
 
 one:
   wallet: one
-  transaction: one
+  transaction_history: one
 
 two:
   wallet: two
-  transaction: two
+  transaction_history: two

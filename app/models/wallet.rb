@@ -1,8 +1,11 @@
 class Wallet < ApplicationRecord
   has_one :customer
   has_many :wallet_transaction
+  has_many :transaction_history
 
   before_create :assign_unique_name
+
+  validates :balance, presence: true
 
   private
 
