@@ -1,6 +1,6 @@
 class UserCardsController < ApplicationController
   def index
-    @cards = current_customer.card
+    @cards = current_customer.cards
   end
 
   def new

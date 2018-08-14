@@ -1,8 +1,8 @@
 class Customer < ApplicationRecord
 
   belongs_to :wallet
-  has_many :card
-  has_many :customer_wallet
+  has_many :cards
+  has_many :customer_wallets
 
   has_secure_password
 

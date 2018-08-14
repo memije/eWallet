@@ -26,8 +26,16 @@
     </nav>
 
     <ul id="slide-out" class="sidenav">
-      <li><a href="#!"><i class="material-icons">account_balance_wallet</i>Mi Wallet</a></li>
-      <li><a href="#!"><i class="material-icons">credit_card</i>Administrar Tarjetas</a></li>
+      <li>
+        <%= link_to home_path do %>
+          <i class="material-icons">account_balance_wallet</i>Mi Wallet
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_cards_path do %>
+          <i class="material-icons">credit_card</i>Administrar Tarjetas
+        <% end %>
+      </li>
       <li><a href="#!"><i class="material-icons">send</i>Transferencias</a></li>
       <li><a href="#!"><i class="material-icons">history</i>Historial</a></li>
       <li><div class="divider"></div></li>

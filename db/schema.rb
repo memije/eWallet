@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_181739) do
+ActiveRecord::Schema.define(version: 2018_08_14_200719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,14 +31,16 @@ ActiveRecord::Schema.define(version: 2018_08_14_181739) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "card_number"
-    t.date "expiration_date"
+    t.string "encrypted_card_name"
+    t.string "encrypted_expiration_date"
     t.bigint "card_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "customers_id"
+    t.bigint "customer_id"
+    t.string "encrypted_card_name_iv"
+    t.string "encrypted_expiration_date_iv"
     t.index ["card_type_id"], name: "index_cards_on_card_type_id"
-    t.index ["customers_id"], name: "index_cards_on_customers_id"
+    t.index ["customer_id"], name: "index_cards_on_customer_id"
   end
 
   create_table "customer_wallets", force: :cascade do |t|
@@ -98,7 +100,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_181739) do
   add_foreign_key "card_transactions", "cards"
   add_foreign_key "card_transactions", "transaction_histories"
   add_foreign_key "cards", "card_types"
-  add_foreign_key "cards", "customers", column: "customers_id"
+  add_foreign_key "cards", "customers"
   add_foreign_key "customer_wallets", "customers"
   add_foreign_key "customer_wallets", "wallets"
   add_foreign_key "customers", "wallets"
