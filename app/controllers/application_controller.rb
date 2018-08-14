@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    helper_method :customer_signed_in?, :current_customer
+    helper_method :customer_signed_in?, :current_customer, :general_wallet
 
     protected
 
@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
 
     def current_customer
         @current_customer ||= Customer.find_by(id: session[:customer_id])
+    end
+
+    def general_wallet
+      @general_wallet ||= Wallet.find(1)
     end
 
     def customer_signed_in?

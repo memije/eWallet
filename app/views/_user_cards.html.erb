@@ -1,0 +1,32 @@
+<div class="card indigo">
+  <div class="card-content white-text">
+    <span class="card-title"><i class="material-icons">credit_card</i> Tarjetas</span>
+    <div class="card-content">
+      <% if @cards.count == 0 %>
+        <h5>No hay tarjetas registradas</h5>
+      <% else %>
+        <table>
+          <thead>
+            <tr>
+              <th>Número de tarjeta</th>
+              <th>Tipo de tarjeta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cards.each do |card| %>
+              <tr>
+                <td><%= "**** **** **** **** #{card.card_name[-4..-1]}"%></td>
+                <td><%= card.card_type.name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-action">
+    <%= link_to new_card_path do %>
+      Agregar Tarjeta
+    <% end %>
+  </div>
+</div>

@@ -64,6 +64,9 @@ gem 'figaro'
 # Materialize CSS gem
 gem 'materialize-sass', '~> 1.0.0.rc2'
 
+# Gem for encrypted attributes
+gem "attr_encrypted", "~> 3.0.0"
+
 # Gem for jQuery
 gem 'jquery-rails'
 

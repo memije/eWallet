@@ -1,3 +1,3 @@
 class TransactionType < ApplicationRecord
-  has_many :transaction_history
+  has_many :transaction_histories
 end

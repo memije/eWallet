@@ -1,3 +1,3 @@
 class CardType < ApplicationRecord
-  has_many :card
+  has_many :cards
 end
