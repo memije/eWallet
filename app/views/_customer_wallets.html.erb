@@ -17,7 +17,7 @@
             <% @customer_wallets.each do |customer_wallet| %>
               <tr>
                 <td><%= customer_wallet.wallet.name %></td>
-                <td><%= customer_wallet.customer.name %></td>
+                <td><%= customer_wallet.wallet.customer.name %></td>
                 <td>
                   <%= link_to customer_wallet_path(id: customer_wallet.id), class: "btn-small red", method: :delete, data: {confirm: "Deseas eliminar esta wallet?"}, title: "Eliminar wallet" do %>
                     <i class="material-icons">delete</i>
