@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :cards
+  resources :cards, except: :show
   resources :customers
 
   get 'session/new' => 'session#new', as: :session_new
