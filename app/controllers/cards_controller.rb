@@ -5,25 +5,47 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find(params[:card_id])
+    @card = Card.find(params[:id])
   end
 
   def new
+    @card_types = CardType.all
     @card = Card.new
   end
 
-  def create
+  def create        
+    @card_types = CardType.all
+    @card = Card.new(card_params)    
+    @card.customer = current_customer
+    if @card.save
+      flash.now[:notice] = "Tarjeta guardada"
+      redirect_to cards_path
+    else
+      flash.now[:error] = @card.errors.full_messages.to_sentence
+      render :new
+    end
   end
 
   def edit
-    @card = Card.find(params[:card_id])
+    @card = Card.find(params[:id])
   end
 
   def update
-    @card = Card.find(params[:card_id])
+    @card = Card.find(params[:id])
   end
 
-  def delete
-    @card = Card.find(params[:card_id])
+  def destroy
+    @card = Card.find(params[:id])
+    if @card.customer == current_customer && @card.destroy
+      flash.now[:notice] = "Tarjeta eliminada"
+    else
+      flash.now[:error] = @card.errors.full_messages.to_sentence
+    end
+    redirect_to cards_path
+  end
+
+  private
+  def card_params
+    params.require(:card).permit(:card_name, :expiration_date, :card_type_id)
   end
 end
