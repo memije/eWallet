@@ -6,4 +6,6 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
 
+env:
+  KEY=kXp2s5v8y/B?E(H+MbPeShVmYq3t6w9z
 cache: bundler
