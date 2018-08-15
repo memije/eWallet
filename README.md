@@ -63,3 +63,16 @@ $ rails s
 ```
 8. ???
 9. PROFIT!!!
+
+# Tests
+
+Tested models:
+[x] Wallet
+[x] Customer
+[x] CustomerWallet
+[x] CardType
+[x] Card
+[x] TransactionType
+[] TransactionHistory
+[] CardTransaction
+[] WalletTransaction
