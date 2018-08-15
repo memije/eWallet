@@ -4,10 +4,6 @@ class CardsController < ApplicationController
     @cards = current_customer.cards
   end
 
-  def show
-    @card = Card.find(params[:id])
-  end
-
   def new
     @card_types = CardType.all
     @card = Card.new
@@ -27,7 +23,9 @@ class CardsController < ApplicationController
   end
 
   def edit
+    @card_types = CardType.all
     @card = Card.find(params[:id])
+    render :new
   end
 
   def update
