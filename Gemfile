@@ -58,6 +58,11 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+# Rspec for both development and test groups
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
 # Database credentials gem
 gem 'figaro'
 

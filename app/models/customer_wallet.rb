@@ -5,6 +5,6 @@ class CustomerWallet < ApplicationRecord
   validates_uniqueness_of :wallet_id, scope: :customer_id
 
   def wallet_name_with_customer
-  	"#{customer.name} - #{wallet.name}"
+  	"#{wallet.customer.name} - #{wallet.name}"
   end
 end
