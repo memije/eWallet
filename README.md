@@ -76,7 +76,7 @@ $ rails s
 - [ ] TransactionHistory
 
 # TODO
-- [] Modify TransactionHistory to be a polymorphic class
-- [] Implement CardTransaction class
-- [] Implement WalletTransaction class
-- [] Refractor TransactionHistory creation method to ensure polymorphism usage
+- [ ] Modify TransactionHistory to be a polymorphic class
+- [ ] Implement CardTransaction class
+- [ ] Implement WalletTransaction class
+- [ ] Refractor TransactionHistory creation method to ensure polymorphism usage
