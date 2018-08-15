@@ -7,5 +7,5 @@ before_script:
   - cp config/database.yml.travis config/database.yml
 
 env:
-  KEY=kXp2s5v8y/B?E(H+MbPeShVmYq3t6w9z
+  - KEY=kXp2s5v8y/B?E(H+MbPeShVmYq3t6w9z
 cache: bundler
