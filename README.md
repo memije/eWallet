@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/Memije/eWallet.svg?branch=master)](https://travis-ci.org/Memije/eWallet)
 
 # Description:
-Simple e-Wallet application, developed with Ruby on Rails, deployed to a [Heroku live server](https://ezwallet.herokuapp.com/home/index)
+Simple e-Wallet application, developed with Ruby on Rails, deployed to a [Heroku live server](https://ezwallet.herokuapp.com/home/index).
 
 The objective of this exercise is to evaluate the analysis capacity, architecture definition and
 development practices that a candidate has.
