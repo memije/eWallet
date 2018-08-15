@@ -24,6 +24,7 @@ class TransactionHistoriesController < ApplicationController
 
 		if @transaction.save
 			general_wallet.balance += @transaction.get_comissions
+			general_wallet.save!
 			case @transaction_type.id
 			# When is funding the wallet
 			when 1
@@ -73,7 +74,7 @@ class TransactionHistoriesController < ApplicationController
 					redirect_to new_transaction_history_path
 				end
 			end
-			@transaction.save
+			@transaction.save!
 		end
 	end
 end
