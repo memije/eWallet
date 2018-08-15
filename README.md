@@ -66,13 +66,13 @@ $ rails s
 
 # Tests
 
-Tested models:
-[x] Wallet
-[x] Customer
-[x] CustomerWallet
-[x] CardType
-[x] Card
-[x] TransactionType
-[] TransactionHistory
-[] CardTransaction
-[] WalletTransaction
+### Tested models:
+- [x] Wallet
+- [x] Customer
+- [x] CustomerWallet
+- [x] CardType
+- [x] Card
+- [x] TransactionType
+- [ ] TransactionHistory
+- [ ] CardTransaction
+- [ ] WalletTransaction
