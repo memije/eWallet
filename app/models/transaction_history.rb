@@ -9,11 +9,15 @@ class TransactionHistory < ApplicationRecord
 
 
   # Method to calculate final amount (amount + comissions)
-  def print_final_amount
-    self.amount + self.porcentual_comission + self.fixed_comission
+  def get_final_amount
+  	if self.transaction_type == TransactionType.find(1)
+  		self.amount - get_comissions
+  	else
+    	self.amount + get_comissions
+  	end
   end
 
-  def print_comissions
+  def get_comissions
     self.porcentual_comission + self.fixed_comission
   end
 

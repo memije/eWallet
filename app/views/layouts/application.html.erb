@@ -36,26 +36,28 @@
           <i class="material-icons">credit_card</i>Administrar Tarjetas
         <% end %>
       </li>
-      <li><a href="#!"><i class="material-icons">send</i>Transferencias</a></li>
-      <li><a href="#!"><i class="material-icons">history</i>Historial</a></li>
-      <li><div class="divider"></div></li>
-      <li><a class="subheader">Subheader</a></li>
-      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+      <li>
+        <%= link_to customer_wallets_path do %>
+          <i class="material-icons">people</i>Mis Wallets
+        <% end %>
+      </li>
+      <li>
+      	<%= link_to transaction_histories_path do %>
+      		<i class="material-icons">send</i> Transferencias
+      	<% end %>
+      </li>
     </ul>
 
     <div class="container">
       <%= yield %>
     </div>
 
-    <% if flash[:error] %>
-      <span class="red-text">
-        <%= flash[:error] %>
-      </span>
-    <% end %>
-
     <script>
         $(document).ready(function(){
-            $(".sidenav").sidenav();
+          $(".sidenav").sidenav();
+
+          <%= render "/iziToast"%>
+
         });
     </script>
   </body>

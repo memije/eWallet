@@ -8,4 +8,8 @@ class Card < ApplicationRecord
 
   has_many :card_transactions
 
+  def masked_card_name
+  	"**** **** **** #{self.card_name[-4..-1]}"
+  end
+
 end

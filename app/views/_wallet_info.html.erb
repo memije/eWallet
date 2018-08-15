@@ -4,7 +4,8 @@
     <h4>Fondos: <%= number_to_currency(@wallet.balance) %></h4>
   </div>
   <div class="card-action">
-    <a href="#">Fondear Wallet</a>
-    <a href="#">Transferir</a>
+  	<%= link_to new_transaction_history_path do %>
+  		Nueva transacción
+  	<% end %>
   </div>
 </div>

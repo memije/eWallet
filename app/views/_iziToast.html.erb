@@ -1,0 +1,15 @@
+<% if flash[:error] %>
+  iziToast.error({
+    title: 'Error',
+    message: "<%= flash[:error]%>",
+    position: "topRight"
+	});
+<% end %>
+
+<% if flash[:notice] %>
+	iziToast.success({
+    title: 'Éxito',
+    message: "<%= flash[:notice]%>",
+    position: "topRight"
+	});
+<% end %>

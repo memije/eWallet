@@ -70,5 +70,8 @@ gem "attr_encrypted", "~> 3.0.0"
 # Gem for jQuery
 gem 'jquery-rails'
 
+# Gem for toasts
+gem 'izitoast'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
