@@ -74,5 +74,3 @@ $ rails s
 - [x] Card
 - [x] TransactionType
 - [ ] TransactionHistory
-- [ ] CardTransaction
-- [ ] WalletTransaction
