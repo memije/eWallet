@@ -6,8 +6,6 @@ class Card < ApplicationRecord
   belongs_to :card_type
   belongs_to :customer
 
-  has_many :card_transactions
-
   def masked_card_name
   	"**** **** **** #{self.card_name[-4..-1]}"
   end

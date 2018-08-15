@@ -1,6 +1,5 @@
 class Wallet < ApplicationRecord
   has_one :customer
-  has_many :wallet_transactions
   has_many :transaction_histories
   has_many :customer_wallets
 
