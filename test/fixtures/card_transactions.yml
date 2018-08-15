@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  card: one
-  transaction_history: one
-
-two:
-  card: two
-  transaction_history: two
