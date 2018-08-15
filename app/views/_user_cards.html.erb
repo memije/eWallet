@@ -20,16 +20,14 @@
                 <td><%= "**** **** **** **** #{card.card_name[-4..-1]}"%></td>
                 <td><%= card.expiration_date %></td>
                 <td><%= card.card_type.name %></td>
-                <% if card.card_transactions.blank? %>
-	                <td>
-	                  <%= link_to edit_card_path(id: card.id), class: "btn-small yellow black-text", title: "Editar tarjeta" do %>
-	                    <i class="material-icons">edit</i>
-	                  <% end %>
-	                  <%= link_to card_path(id: card.id), class: "btn-small red", method: :delete, data: {confirm: "Deseas eliminar la tarjeta?"}, title: "Eliminar tarjeta" do %>
-	                    <i class="material-icons">delete</i>
-	                  <% end %>
-	                </td>
-                <% else %>
+                <td>
+                  <%= link_to edit_card_path(id: card.id), class: "btn-small yellow black-text", title: "Editar tarjeta" do %>
+                    <i class="material-icons">edit</i>
+                  <% end %>
+                  <%= link_to card_path(id: card.id), class: "btn-small red", method: :delete, data: {confirm: "Deseas eliminar la tarjeta?"}, title: "Eliminar tarjeta" do %>
+                    <i class="material-icons">delete</i>
+                  <% end %>
+                </td>
 		            <td>
 		            </td>
                 <% end %>

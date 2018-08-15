@@ -2,9 +2,6 @@ class TransactionHistory < ApplicationRecord
   belongs_to :wallet
   belongs_to :transaction_type
 
-  has_one :card_transaction
-  has_one :wallet_transaction
-
   before_create :calculate_commission
 
 
