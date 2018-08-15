@@ -1,11 +1,6 @@
 <div class="center">
   <div class="section"></div>
   <h5 class="indigo-text">Registro</h5>
-  <% if flash[:error] %>
-    <span class="red-text">
-      <%= flash[:error] %>
-    </span>
-  <% end %>
   <div class="section"></div>
 
   <div class="container">
@@ -57,9 +52,3 @@
     </div>
   </div>
 </div>
-
-<script>
-    $(function(){
-        $.backstretch("<%= image_path('money.jpg') %>");
-    });
-</script>

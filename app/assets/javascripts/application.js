@@ -16,3 +16,4 @@
 //= require activestorage
 //= require backstretch/jquery.backstretch.min.js
 //= require materialize
+//= require iziToast

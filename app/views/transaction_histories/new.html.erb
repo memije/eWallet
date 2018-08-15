@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col s8 offset-s2">
+        <div class="card indigo lighten-5">
+            <div class="card-content">
+                <span class="card-title"><i class="material-icons">send</i> Nueva transacción</span>
+
+                <%= form_for @transaction, html: {role: "form"} do |f| %>
+
+                		<div class="row">
+                        <div class="input-field col s12">
+                            <%= f.select :transaction_type_id, required: true do %>
+                                <% @transaction_types.each do |type| %>
+                                    <%= content_tag(:option, type.name, value: type.id) %>
+                                <% end %>
+                            <% end %>
+                            <%= f.label :transaction_type_id, "Tipo de operación" %>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                        		<%= f.number_field :amount, step: :any, required: true, min: "1.0" %>
+                            <%= f.label :amount, "Monto" %>
+                        </div>
+                    </div>
+
+										<div id="hidden_select_card" style="display: none">
+											<div class="row">
+	                      <div class="input-field col s12">
+	                          <%= select_tag :card_id, options_from_collection_for_select(@cards, :id, :masked_card_name) %>
+	                          <%= label_tag :card_id, "Seleccione tarjeta" %>
+	                      </div>
+		                  </div>
+
+		                  <div class="row">
+	                      <div class="input-field col s12">
+	                          <%= text_field_tag :cvv, nil, pattern: "[0-9]{3}" %>
+	                          <%= label_tag :cvv, "Ingrese el CVV" %>
+	                      </div>
+		                  </div>
+										</div>
+
+                    <div id="hidden_select_debit_card" class="row" style="display: none">
+                        <div class="input-field col s12">
+                            <%= select_tag :debit_card_id, options_from_collection_for_select(@debit_cards, :id, :masked_card_name) %>
+                            <%= label_tag :debit_card_id, "Seleccione tarjeta" %>
+                        </div>
+                    </div>
+
+										<div id="hidden_select_wallet" class="row" style="display: none">
+                        <div class="input-field col s12">
+                            <%= select_tag :wallet_id, options_from_collection_for_select(@wallets, :id, :wallet_name_with_customer) %>
+                            <%= label_tag :wallet_id, "Seleccione wallet" %>
+                        </div>
+                    </div>
+
+                    <div class="center">
+                        <div class="row">
+                        <%= f.submit "Enviar", class: "col s12 btn btn-large " %>
+                        </div>
+                    </div>
+
+                <% end %>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+
+    $('#transaction_history_transaction_type_id').change((e) => {
+    	$hidden_select_card = $("#hidden_select_card");
+			$hidden_select_debit_card = $("#hidden_select_debit_card");
+			$hidden_select_wallet = $("#hidden_select_wallet");
+
+			var opt = $(e.target).val();
+
+    	switch(opt){
+    		case "1":
+	    		$hidden_select_card.show()
+					$hidden_select_debit_card.hide();
+					$hidden_select_wallet.hide()
+    		break;
+    		case "2":
+    			$hidden_select_card.hide()
+					$hidden_select_debit_card.hide();
+					$hidden_select_wallet.show()
+    		break;
+    		case "3":
+    			$hidden_select_card.hide()
+					$hidden_select_debit_card.show();
+					$hidden_select_wallet.hide()
+    		break;
+    	}
+    }).trigger('change');
+
+  });
+</script>

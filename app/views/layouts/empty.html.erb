@@ -13,5 +13,15 @@
 
 <%= yield %>
 
+<script>
+	$(function(){
+
+		$.backstretch("<%= image_path('money.jpg') %>");
+
+	  <%= render "/iziToast"%>
+
+	});
+</script>
+
 </body>
 </html>

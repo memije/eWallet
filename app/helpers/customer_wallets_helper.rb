@@ -1,0 +1,2 @@
+module CustomerWalletsHelper
+end

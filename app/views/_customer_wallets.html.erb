@@ -1,0 +1,38 @@
+<div class="card deep-purple darken-1">
+  <div class="card-content white-text">
+    <span class="card-title"><i class="material-icons">people</i> Mis wallets</span>
+    <div class="card-content">
+      <% if @customer_wallets.count == 0 %>
+        <h5>No hay wallets registradas</h5>
+      <% else %>
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Wallet ID</th>
+              <th>Titular</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customer_wallets.each do |customer_wallet| %>
+              <tr>
+                <td><%= customer_wallet.wallet.name %></td>
+                <td><%= customer_wallet.customer.name %></td>
+                <td>
+                  <%= link_to customer_wallet_path(id: customer_wallet.id), class: "btn-small red", method: :delete, data: {confirm: "Deseas eliminar esta wallet?"}, title: "Eliminar wallet" do %>
+                    <i class="material-icons">delete</i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-action">
+    <%= link_to new_customer_wallet_path do %>
+      Agregar Wallet
+    <% end %>
+  </div>
+</div>

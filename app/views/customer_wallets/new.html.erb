@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col s8 offset-s2">
+        <div class="card indigo lighten-5">
+            <div class="card-content">
+                <span class="card-title"><i class="material-icons">account_balance_wallet</i> Agregar wallet</span>
+
+                <%= form_for @customer_wallet, html: {role: "form"} do |f| %>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                        		<%= f.text_field :wallet, required: true %>
+                            <%= f.label :wallet, "Wallet ID" %>
+                        </div>
+                    </div>
+
+                    <div class="center">
+                        <div class="row">
+                        <%= f.submit "Guardar", class: "col s12 btn btn-large " %>
+                        </div>
+                    </div>
+
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+</div>

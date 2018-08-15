@@ -1,7 +1,7 @@
 <div class="card indigo lighten-5">
   <div class="card-content">
     <span class="card-title"><i class="material-icons">history</i> Historial</span>
-    <% if @wallet.transaction_histories.count == 0 %>
+    <% if @wallet.transaction_histories.where(complete: true).count == 0 %>
       <h5>No hay transacciones registradas</h5>
     <% else %>
       <h5>Transacciones Realizadas</h5>
@@ -10,7 +10,6 @@
         <tr>
           <th>Fecha y Hora</th>
           <th>Tipo de Transacción</th>
-          <th>Destino</th>
           <th>Monto</th>
           <th>Comisión</th>
           <th>Total</th>
@@ -18,18 +17,13 @@
         </thead>
 
         <tbody>
-        <% @wallet.transaction_histories.each do |transaction|%>
+        <% @wallet.transaction_histories.where(complete: true).each do |transaction|%>
           <tr>
-            <td><%= transaction.created_at %></td>
+            <td><%= transaction.created_at.in_time_zone("Mexico City").strftime("%d/%m/%Y - %I:%M%P") %></td>
             <td><%= transaction.transaction_type.name %></td>
-            <% if !transaction.card_transaction.blank? %>
-              <td>Tarjeta de Débito</td>
-            <% elsif !transaction.wallet_transaction.blank? %>
-              <td>Wallet</td>
-            <% end %>
             <td><%= number_to_currency(transaction.amount) %></td>
-            <td><%= number_to_currency(transaction.print_comissions) %></td>
-            <td><%= number_to_currency(transaction.print_final_amount) %></td>
+            <td><%= number_to_currency(transaction.get_comissions) %></td>
+            <td><%= number_to_currency(transaction.get_final_amount) %></td>
           </tr>
         <% end %>
         </tbody>

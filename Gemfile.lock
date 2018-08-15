@@ -89,6 +89,7 @@ GEM
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
+    izitoast (1.2.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -212,6 +213,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   figaro
+  izitoast
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
