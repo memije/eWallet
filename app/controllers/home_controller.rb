@@ -4,5 +4,6 @@ class HomeController < ApplicationController
 
   def index
     @wallet = current_customer.wallet
+    @cards = current_customer.cards
   end
 end

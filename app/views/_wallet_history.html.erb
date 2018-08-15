@@ -1,7 +1,7 @@
 <div class="card indigo lighten-5">
   <div class="card-content">
     <span class="card-title"><i class="material-icons">history</i> Historial</span>
-    <% if @wallet.transaction_history.count == 0 %>
+    <% if @wallet.transaction_histories.count == 0 %>
       <h5>No hay transacciones registradas</h5>
     <% else %>
       <h5>Transacciones Realizadas</h5>
@@ -18,7 +18,7 @@
         </thead>
 
         <tbody>
-        <% @wallet.transaction_history.each do |transaction|%>
+        <% @wallet.transaction_histories.each do |transaction|%>
           <tr>
             <td><%= transaction.created_at %></td>
             <td><%= transaction.transaction_type.name %></td>
